@@ -1,188 +1,791 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plateau Pro Flooring </title>
-    <meta name="description" content="Plateau Pro Flooring: Your trusted partner for quality flooring installation, repair, and sales in Vancouver, BC. With 40 years of experience, we deliver exceptional results.">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Plateau Pro Flooring | Vancouver's Trusted Flooring Experts</title>
+    <base target="_self">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2c5282',
+                        accent: '#ecc94b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .project-card {
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ecc94b;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
 </head>
-<body>
-
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/logo.png" alt="Plateau Pro Flooring Logo">
-                </a>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center" onclick="navigate(event, 'home')">
+                        <img class="h-8 w-auto" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Plateau Pro Flooring Logo">
+                        <span class="ml-2 text-xl font-bold text-primary dark:text-white">Plateau Pro Flooring</span>
+                    </a>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#" class="nav-link text-gray-900 dark:text-white px-3 py-2 text-sm font-medium" onclick="navigate(event, 'home')">Home</a>
+                    <a href="#" class="nav-link text-gray-900 dark:text-white px-3 py-2 text-sm font-medium" onclick="navigate(event, 'services')">Services</a>
+                    <a href="#" class="nav-link text-gray-900 dark:text-white px-3 py-2 text-sm font-medium" onclick="navigate(event, 'projects')">Past Projects</a>
+                    <a href="#" class="nav-link text-gray-900 dark:text-white px-3 py-2 text-sm font-medium" onclick="navigate(event, 'reviews')">Reviews</a>
+                    <a href="#" class="nav-link text-gray-900 dark:text-white px-3 py-2 text-sm font-medium" onclick="navigate(event, 'contact')">Contact</a>
+                    <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary dark:focus:ring-accent">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars h-6 w-6"></i>
+                    </button>
+                </div>
             </div>
-            <nav class="main-nav">
-                <button class="menu-toggle" aria-label="Toggle navigation menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul class="nav-list">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li class="dropdown">
-                        <a href="services.html">Services <i class="fas fa-caret-down"></i></a>
-                        <ul class="dropdown-content">
-                            <li><a href="services.html#hardwood">Hardwood Flooring</a></li>
-                            <li><a href="services.html#laminate">Laminate Flooring</a></li>
-                            <li><a href="services.html#vinyl">Vinyl Flooring</a></li>
-                            <li><a href="services.html#carpet">Tile Carpet Installation</a></li>
-                            <li><a href="services.html#tile">Tile Flooring</a></li>
-                            <li><a href="services.html#commercial">Stone Installation</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </nav>
         </div>
-    </header>
 
-    <main>
-        <section class="hero-section">
-            <div class="hero-content container">
-                <h1>Plateau Pro Flooring</h1>
-                <p>Your Trusted Partner for Quality Flooring Installation, Repair & Sales.</p>
-                <div class="hero-ctas">
-                    <a href="contact.html" class="btn btn-primary">Get a Free Quote</a>
-                    <a href="gallery.html" class="btn btn-secondary">View Our Gallery</a>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700" onclick="navigate(event, 'home')">Home</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700" onclick="navigate(event, 'services')">Services</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700" onclick="navigate(event, 'projects')">Past Projects</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700" onclick="navigate(event, 'reviews')">Reviews</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700" onclick="navigate(event, 'contact')">Contact</a>
+                <button id="mobile-theme-toggle" type="button" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i> Toggle Theme
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="content" class="min-h-screen">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <!-- Hero Section -->
+            <div class="hero-bg h-96 flex items-center justify-center text-center text-white">
+                <div class="px-4 py-16 sm:px-6 lg:px-8">
+                    <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">Quality Flooring Solutions</h1>
+                    <p class="mt-6 text-xl max-w-3xl mx-auto">20 years of trusted service in Vancouver's commercial and residential flooring needs</p>
+                    <div class="mt-10">
+                        <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-primary bg-accent hover:bg-yellow-500" onclick="navigate(event, 'contact')">
+                            Get a Free Estimate
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-accent font-semibold tracking-wide uppercase">About Us</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                        Vancouver's Premier Flooring Experts
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-300 lg:mx-auto">
+                        For two decades, Plateau Pro Flooring has been transforming homes and businesses across Vancouver with exceptional craftsmanship and unparalleled service.
+                    </p>
+                </div>
+
+                <div class="mt-20">
+                    <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
+                        <div class="text-center">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto">
+                                <i class="fas fa-home text-xl"></i>
+                            </div>
+                            <h3 class="mt-6 text-lg font-medium text-gray-900 dark:text-white">Residential</h3>
+                            <p class="mt-2 text-base text-gray-500 dark:text-gray-300">
+                                Beautiful, durable flooring solutions for your home that combine style and functionality.
+                            </p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto">
+                                <i class="fas fa-building text-xl"></i>
+                            </div>
+                            <h3 class="mt-6 text-lg font-medium text-gray-900 dark:text-white">Commercial</h3>
+                            <p class="mt-2 text-base text-gray-500 dark:text-gray-300">
+                                High-performance flooring designed for businesses that demand durability and professional aesthetics.
+                            </p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto">
+                                <i class="fas fa-award text-xl"></i>
+                            </div>
+                            <h3 class="mt-6 text-lg font-medium text-gray-900 dark:text-white">Quality Guarantee</h3>
+                            <p class="mt-2 text-base text-gray-500 dark:text-gray-300">
+                                We stand behind our work with industry-leading warranties and exceptional customer service.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="bg-primary dark:bg-gray-800">
+                <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+                    <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                        <span class="block">Ready to transform your space?</span>
+                        <span class="block text-accent">Contact us today for a free consultation.</span>
+                    </h2>
+                    <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                        <div class="inline-flex rounded-md shadow">
+                            <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-accent hover:bg-yellow-500" onclick="navigate(event, 'contact')">
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="intro-section container">
-            <h2>Transforming Spaces, One Floor at a Time</h2>
-            <p>For four decades, Plateau Pro Flooring has been the cornerstone of exceptional flooring solutions in Vancouver, BC. Our unwavering commitment to quality craftsmanship, superior materials, and unparalleled customer service has made us the go-to choice for homeowners and businesses alike. Experience the difference 40 years of dedication makes.</p>
-        </section>
+        <!-- Services Page -->
+        <section id="services" class="page hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center">
+                    <h2 class="text-base text-accent font-semibold tracking-wide uppercase">Our Services</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                        Comprehensive Flooring Solutions
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-300 mx-auto">
+                        From installation to refinishing, we offer a full range of professional flooring services.
+                    </p>
+                </div>
 
-        <section class="services-overview">
-            <div class="container">
-                <h2>Our Core Flooring Services</h2>
-                <div class="service-cards">
-                    <div class="service-card">
-                        <i class="fas fa-tree icon"></i>
-                        <h3>Hardwood Flooring</h3>
-                        <p>Timeless elegance and enduring quality. Installation, refinishing, and repair.</p>
-                        <a href="services.html#hardwood" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-layer-group icon"></i>
-                        <h3>Laminate & Vinyl</h3>
-                        <p>Durable, versatile, and beautiful options for any space and budget.</p>
-                        <a href="services.html#laminate" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-chair icon"></i>
-                        <h3>Carpet Installation</h3>
-                        <p>Comfort and style. Residential and commercial carpet solutions.</p>
-                        <a href="services.html#carpet" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-grip-lines icon"></i>
-                        <h3>Tile Flooring</h3>
-                        <p>Ceramic, porcelain, and natural stone for kitchens, bathrooms, and more.</p>
-                        <a href="services.html#tile" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                <div class="mt-16">
+                    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                            <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Hardwood Flooring</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                    Classic elegance with modern durability. We install, refinish, and repair all types of hardwood floors.
+                                </p>
+                                <div class="mt-4">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white">
+                                        Residential & Commercial
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                            <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1565538810643-b5bdb714032a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Laminate & Vinyl</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                    Affordable, durable, and stylish options that mimic natural materials without the maintenance.
+                                </p>
+                                <div class="mt-4">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white">
+                                        Residential & Commercial
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                            <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1600566752227-8f3e8a57d521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Tile & Stone</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                    Beautiful, long-lasting flooring solutions for kitchens, bathrooms, and high-traffic areas.
+                                </p>
+                                <div class="mt-4">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white">
+                                        Residential & Commercial
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                            <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Carpet Installation</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                    Premium carpet options that provide comfort, warmth, and noise reduction for any space.
+                                </p>
+                                <div class="mt-4">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white">
+                                        Residential Focus
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                            <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1916&q=80');"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Floor Refinishing</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                    Restore your existing floors to their original beauty with our professional refinishing services.
+                                </p>
+                                <div class="mt-4">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white">
+                                        Residential & Commercial
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                            <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Commercial Flooring</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                    Specialized flooring solutions designed for high-traffic commercial environments and businesses.
+                                </p>
+                                <div class="mt-4">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white">
+                                        Commercial Focus
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="why-choose-us-section">
-            <div class="container">
-                <h2>Why Choose Plateau Pro Flooring?</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <i class="fas fa-medal icon"></i>
-                        <h3>40 Years of Expertise</h3>
-                        <p>Unmatched experience in every aspect of flooring.</p>
+        <!-- Projects Page -->
+        <section id="projects" class="page hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center">
+                    <h2 class="text-base text-accent font-semibold tracking-wide uppercase">Our Work</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                        Past Projects
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-300 mx-auto">
+                        See examples of our craftsmanship in homes and businesses across Vancouver.
+                    </p>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <img class="w-full h-64 object-cover" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern Home Hardwood Floors">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">West Vancouver Residence</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                Premium hardwood flooring installation throughout this luxury home.
+                            </p>
+                            <div class="mt-4 flex items-center">
+                                <span class="text-sm text-gray-500 dark:text-gray-400">Residential</span>
+                                <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">2023</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature-item">
-                        <i class="fas fa-handshake icon"></i>
-                        <h3>Customer Satisfaction</h3>
-                        <p>Your happiness is our ultimate goal.</p>
+
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <img class="w-full h-64 object-cover" src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Office Flooring">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Downtown Office Renovation</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                Commercial-grade luxury vinyl plank flooring for a modern office space.
+                            </p>
+                            <div class="mt-4 flex items-center">
+                                <span class="text-sm text-gray-500 dark:text-gray-400">Commercial</span>
+                                <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">2022</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature-item">
-                        <i class="fas fa-map-marker-alt icon"></i>
-                        <h3>Local Vancouver Experts</h3>
-                        <p>Serving our community with local knowledge and care.</p>
+
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <img class="w-full h-64 object-cover" src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen Tile">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Kitsilano Kitchen Remodel</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                Custom ceramic tile installation with intricate pattern work.
+                            </p>
+                            <div class="mt-4 flex items-center">
+                                <span class="text-sm text-gray-500 dark:text-gray-400">Residential</span>
+                                <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">2022</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature-item">
-                        <i class="fas fa-ruler-combined icon"></i>
-                        <h3>Quality Craftsmanship</h3>
-                        <p>Precision and attention to detail in every project.</p>
+
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <img class="w-full h-64 object-cover" src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Retail Store Flooring">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Gastown Retail Space</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                Polished concrete flooring with custom staining for a high-end boutique.
+                            </p>
+                            <div class="mt-4 flex items-center">
+                                <span class="text-sm text-gray-500 dark:text-gray-400">Commercial</span>
+                                <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">2021</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <img class="w-full h-64 object-cover" src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Hardwood Refinishing">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Shaughnessy Heritage Home</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                Restoration and refinishing of original 1920s hardwood floors.
+                            </p>
+                            <div class="mt-4 flex items-center">
+                                <span class="text-sm text-gray-500 dark:text-gray-400">Residential</span>
+                                <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">2021</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <img class="w-full h-64 object-cover" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Hospital Flooring">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">VGH Medical Facility</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                Antimicrobial flooring installation for a hospital renovation project.
+                            </p>
+                            <div class="mt-4 flex items-center">
+                                <span class="text-sm text-gray-500 dark:text-gray-400">Commercial</span>
+                                <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">2020</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="testimonials-preview container">
-            <h2>What Our Clients Say</h2>
-            <div class="testimonial-slider">
-                <div class="testimonial-item">
-                    <p>"Plateau Pro Flooring transformed our living room! The hardwood installation was flawless and the team was incredibly professional. Highly recommend!"</p>
-                    <h4>- Sarah L., Kitsilano</h4>
+        <!-- Reviews Page -->
+        <section id="reviews" class="page hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center">
+                    <h2 class="text-base text-accent font-semibold tracking-wide uppercase">Testimonials</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                        What Our Clients Say
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-300 mx-auto">
+                        Don't just take our word for it - hear from our satisfied customers.
+                    </p>
                 </div>
-                <div class="testimonial-item">
-                    <p>"After 40 years, it's clear they know their stuff. Excellent service and a beautiful new laminate floor in our commercial space."</p>
-                    <h4>- Business Owner, Downtown Vancouver</h4>
+
+                <div class="mt-16">
+                    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Sarah J.">
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Sarah J.</h3>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-gray-600 dark:text-gray-300">
+                                "Plateau Pro Flooring transformed our entire home with beautiful hardwood floors. Their team was professional, punctual, and left the space spotless. The quality of their work is exceptional - five years later and our floors still look brand new."
+                            </p>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Michael T.">
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Michael T.</h3>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-gray-600 dark:text-gray-300">
+                                "As a property manager, I've worked with many flooring companies over the years. Plateau Pro stands out for their reliability and quality work. They've completed several projects in our buildings, always on time and within budget. Highly recommend for commercial projects."
+                            </p>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Lisa & David W.">
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Lisa & David W.</h3>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-gray-600 dark:text-gray-300">
+                                "We had our entire main floor done with luxury vinyl plank, and we couldn't be happier. The team was respectful of our home, worked efficiently, and the end result exceeded our expectations. The floors are not only beautiful but also incredibly durable for our busy family."
+                            </p>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Robert K.">
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Robert K.</h3>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-gray-600 dark:text-gray-300">
+                                "The tile work in our kitchen and bathrooms is absolutely stunning. Plateau Pro's attention to detail is remarkable - every cut is perfect, every grout line is even. They took the time to understand exactly what we wanted and delivered beyond our expectations."
+                            </p>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80" alt="Jennifer H.">
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Jennifer H.</h3>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-gray-600 dark:text-gray-300">
+                                "After a plumbing disaster ruined our floors, Plateau Pro came to the rescue. They handled everything from demolition to the beautiful new installation. Their team was compassionate about our situation and worked quickly to get our home back to normal."
+                            </p>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Thomas R.">
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Thomas R.</h3>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-gray-600 dark:text-gray-300">
+                                "We hired Plateau Pro to refinish the original hardwood floors in our heritage home. The transformation was incredible - they look brand new while maintaining their historic character. The crew was meticulous and left no mess behind. Worth every penny."
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                </div>
-            <a href="about.html#testimonials" class="btn btn-secondary">Read More Testimonials</a>
+            </div>
         </section>
 
-        <section class="cta-banner">
-            <div class="container">
-                <h2>Ready to Transform Your Space?</h2>
-                <p>Contact Plateau Pro Flooring today for a free consultation and estimate!</p>
-                <a href="contact.html" class="btn btn-primary">Get Your Free Quote</a>
+        <!-- Contact Page -->
+        <section id="contact" class="page hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center">
+                    <h2 class="text-base text-accent font-semibold tracking-wide uppercase">Get in Touch</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                        Contact Plateau Pro Flooring
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-300 mx-auto">
+                        Ready to start your flooring project? Reach out for a free consultation and estimate.
+                    </p>
+                </div>
+
+                <div class="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Contact Information</h3>
+                        <div class="mt-6 space-y-6">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                                </div>
+                                <div class="ml-3 text-base text-gray-500 dark:text-gray-300">
+                                    <p>123 Flooring Way</p>
+                                    <p>Vancouver, BC V6B 1H4</p>
+                                </div>
+                            </div>
+
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-phone-alt text-primary text-xl"></i>
+                                </div>
+                                <div class="ml-3 text-base text-gray-500 dark:text-gray-300">
+                                    <p>(604) 555-1234</p>
+                                </div>
+                            </div>
+
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-envelope text-primary text-xl"></i>
+                                </div>
+                                <div class="ml-3 text-base text-gray-500 dark:text-gray-300">
+                                    <p>info@plateauproflooring.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-clock text-primary text-xl"></i>
+                                </div>
+                                <div class="ml-3 text-base text-gray-500 dark:text-gray-300">
+                                    <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                                    <p>Saturday: 9:00 AM - 2:00 PM</p>
+                                    <p>Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Service Areas</h3>
+                            <div class="mt-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white mr-2 mb-2">Vancouver</span>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white mr-2 mb-2">Burnaby</span>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white mr-2 mb-2">Richmond</span>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white mr-2 mb-2">North Vancouver</span>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white mr-2 mb-2">West Vancouver</span>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white mr-2 mb-2">Coquitlam</span>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary text-white mr-2 mb-2">Surrey</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Send Us a Message</h3>
+                        <form class="mt-6 space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                                <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary dark:bg-gray-700 dark:text-white sm:text-sm">
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                                <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary dark:bg-gray-700 dark:text-white sm:text-sm">
+                            </div>
+
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
+                                <input type="tel" id="phone" name="phone" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary dark:bg-gray-700 dark:text-white sm:text-sm">
+                            </div>
+
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Service Needed</label>
+                                <select id="service" name="service" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary dark:bg-gray-700 dark:text-white sm:text-sm">
+                                    <option>Hardwood Flooring</option>
+                                    <option>Laminate & Vinyl</option>
+                                    <option>Tile & Stone</option>
+                                    <option>Carpet Installation</option>
+                                    <option>Floor Refinishing</option>
+                                    <option>Commercial Flooring</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary dark:bg-gray-700 dark:text-white sm:text-sm"></textarea>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col about-col">
-                    <h3>Plateau Pro Flooring</h3>
-                    <p>Your trusted flooring experts in Vancouver, BC, with 40 years of dedicated service.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/plateau__pro?igsh=MTJyMjIxZjRiZGhjMA%3D%3D&utm_source=qr" target="_blank"  aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                       
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold">Plateau Pro Flooring</h3>
+                    <p class="mt-4 text-gray-300">
+                        20 years of trusted flooring services in Vancouver and surrounding areas.
+                    </p>
+                    <div class="mt-6 flex space-x-6">
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="footer-col links-col">
-    <h3>Quick Links</h3>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="projects.html">Projects</a></li> <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-</div>
-                <div class="footer-col contact-info-col">
-                    <h3>Contact Info</h3>
-                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+16048310708">604-831-0708</a></p>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:plateauproflooring@gmail.com">plateauproflooring@gmail.com</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> Serving Vancouver & Surrounding Areas, BC</p>
-                    <p>Business Hours: Mon - Fri : 8:00 AM - 5:00 PM & Saurday: 10:00 AM - 5:00 PM</p>
+
+                <div>
+                    <h3 class="text-lg font-bold">Quick Links</h3>
+                    <div class="mt-4 space-y-2">
+                        <a href="#" class="block text-gray-300 hover:text-white" onclick="navigate(event, 'home')">Home</a>
+                        <a href="#" class="block text-gray-300 hover:text-white" onclick="navigate(event, 'services')">Services</a>
+                        <a href="#" class="block text-gray-300 hover:text-white" onclick="navigate(event, 'projects')">Past Projects</a>
+                        <a href="#" class="block text-gray-300 hover:text-white" onclick="navigate(event, 'reviews')">Reviews</a>
+                        <a href="#" class="block text-gray-300 hover:text-white" onclick="navigate(event, 'contact')">Contact</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold">Business Hours</h3>
+                    <div class="mt-4 space-y-2 text-gray-300">
+                        <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        <p>Saturday: 9:00 AM - 2:00 PM</p>
+                        <p>Sunday: Closed</p>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> Plateau Pro Flooring. All rights reserved.</p>
-                <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+
+            <div class="mt-12 pt-8 border-t border-gray-700">
+                <p class="text-gray-300 text-sm text-center">
+                    &copy; 2023 Plateau Pro Flooring. All rights reserved.
+                </p>
             </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Navigation functionality
+        function navigate(event, pageId) {
+            event.preventDefault();
+            
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.add('hidden');
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.remove('hidden');
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Update active link in navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-accent', 'font-bold');
+            });
+            
+            // Highlight the clicked link if it's a nav-link
+            if (event.target.classList.contains('nav-link')) {
+                event.target.classList.add('text-accent', 'font-bold');
+            }
+        }
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        if (mobileThemeToggle) {
+            mobileThemeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        function toggleTheme() {
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        }
+
+        // Check for saved theme preference
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // Form submission
+        document.querySelector('form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you shortly.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
